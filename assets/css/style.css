@@ -1,0 +1,567 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+/* ------------------------------------Globals--------------------------------- */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-size: calc(var(--font-size) * 1em);
+    z-index: 1;
+}
+
+:root{
+    --space: 1rem;
+    --font-size: 1rem;
+    --primary-color: #ff0000;
+    --secondary-color: #00ff00;
+    --first-color: hsl(234, 62%, 56%);
+    --icon-color: hsl(234, 12%, 24%);
+    --container-color: hls(234, 100%, 99%);
+}
+
+a{
+    text-decoration: none;
+}
+
+/* ------------------------------------ Body -------------------------------- */
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    position: relative;
+}
+
+body::after{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url(/assets/img/Constructionv3.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+body.signup::after{
+    opacity: 1;
+}
+
+body::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url(/assets/img/Construction.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+/* -------------------------------------- Container ------------------------------*/
+
+.container {
+    position: relative;
+    width: 80%;
+}
+
+/* -------------------------------------- Logo Container ------------------------ */
+
+.logo-container{
+    position: sticky;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    transform: translateY(-50%);
+}
+
+.logo-container img{
+    max-width: 60%;
+    height: auto;
+}
+
+/* ------------------------------------- Login Container ------------------------- */
+
+.login-container{
+    position: relative;
+    width: 20vw;
+    height: 40vh;
+    border-radius: 0.94rem;
+    box-shadow: 0 0.3vw 1.5625vw rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transition: 0.5s;
+    overflow: hidden;
+    text-align: center;
+    margin: 0 auto;
+    transform: translateY(20%);
+}
+
+.login-container::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-conic-gradient(from var(--a), #ff0000 0%, #ff0000 10%, transparent 10%, transparent 80%, #ff0000 100%);
+    border-radius: 5%;
+    animation: animate 2.5s linear infinite;
+    will-change: transform;
+}
+
+@property --a{
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+.login-container span{
+    position: absolute;
+    inset: 0.3125rem;
+    overflow: hidden;
+    border-radius: 0.938rem;
+}
+
+.login-container span::before{
+    content: '';
+    position: absolute;
+    inset: 0.313rem;
+    background: url(/assets/img/Construction.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    filter: blur(0.625rem);
+}
+
+.login-container span::after{
+    content: '';
+    position: absolute;
+    inset: 0.3125rem;
+    background: url(/assets/img/Construction.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    filter: blur(1rem);
+}
+
+/* --------------------------------- Animation 360º --------------------------- */
+@keyframes animate{
+    0%
+    {
+        --a: 0deg;
+    }
+    100%
+    {
+        --a: 360deg;
+    }
+}
+
+/* --------------------------------- Login container signup form -------------------- */
+
+body.signup .login-container{
+    transition: 0.5s;
+    width: 20vw;
+    height: 40vh;
+}
+
+body.signup .login-container span::before,
+body.signup .login-container span::after
+{ 
+    background: url(/assets/img/Constructionv3.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    filter: blur(1.5rem);
+}
+
+/* ---------------------------------- Forms --------------------------- */
+
+form{
+    position: absolute;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.938rem;
+    transition: 0.5s;
+}
+
+form#signupForm{
+    left: 100%;
+    position: relative;
+}
+body.signup form#signinForm{
+    left: -100%;
+}
+
+body.signup form#signupForm{
+    left: 0;
+}
+
+form h2{
+    position: relative;
+    color: #000000;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+form .inputBox{
+    position: relative;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+form .inputBox a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+form .inputBox a:nth-child(2){
+    text-decoration: underline;
+}
+
+form .inputBox input{
+    width: 100%;
+    outline: none;
+    border: 0.063rem solid rgba(255, 255, 255, 0.25);
+    background: rgba(0, 0, 0, 0.15);
+    padding: 0.375rem 0.938rem;
+    border-radius: 0.25rem;
+    font-size: 0.85em;
+    color: #fff;
+}
+
+form .inputBox input::placeholder{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+form .inputBox input[type="submit"] {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-weight: 500;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+form .inputBox input[type="submit"]:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+form .inputBox input[type="submit"]::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    opacity: 0;
+    transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+}
+
+form .inputBox input[type="submit"]:active::before {
+    width: 200px;
+    height: 200px;
+    opacity: 1;
+}
+
+/* =============== Sign In button ================ */
+
+form#signupForm .inputBox input[type="submit"]{
+    background: #f4242f;
+}
+
+form#signupForm b {
+    font-weight: 500;
+    color: #ffeb3b;
+    text-decoration: underline;
+    margin-bottom: 5rem;
+}
+
+form#signupForm h2{
+    transform: translateY(-400%);
+}
+
+/* ---------------------------------- Floating Menu -----------------------------*/
+.floating{
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    position: fixed;
+}
+
+.floating_container{
+    position: relative;
+    left: -50%;
+}
+
+.floating_toggle,
+.floating_icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.floating_toggle{
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+    position: relative;
+    z-index: 10;
+    cursor: pointer;
+    transition: box-shadow .3s ease-in-out, transform .3s;
+    background: linear-gradient(to right, rgba(255,255,255,0.3), rgba(255,255,255,0.1)); 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+    transition: transform .6s ease-in-out;
+}
+
+.floating_toggle i{
+    transition: transform .5s ease-in-out;
+}
+
+.floating_toggle:hover{
+    box-shadow: 6px 6px 24px hsl(234, 48%, 98%),
+                -6px -6px 24px hsl(234, 48%, 88%),
+                inset -6px -6px 24px hsl(234, 48%, 98%),
+                inset 6px 6px 24px hsl(234, 48%, 88%);
+    transform: scale(.95);
+}
+
+.floating_icon,
+.floating_link{
+    width: 40px;
+    height: 40px;
+}
+
+.floating_icon{
+    font-size: 1rem;
+    color: var(--icon-color);
+    transition: box-shadow .3s ease-in-out;
+    background: linear-gradient(to right, rgba(255,255,255,0.3), rgba(255,255,255,0.1)); 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.floating_icon:hover{
+    box-shadow: 4px 4px 16px hsl(234, 48%, 98%),
+                -4px -4px 16px hsl(234, 48%, 90%),
+                inset -4px -4px 16px hsl(234, 48%, 98%),
+                inset 4px 4px 16px hsl(234, 48%, 90%);
+}
+
+.floating_link{
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    opacity: 0;
+    transition: transform .8s ease-in-out, opacity .6s;
+    z-index: 1;
+}
+ /* ================= Floating text ====================== */
+.floating_link::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 50%;
+    right: -270%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    margin-right: 10px;
+}
+  
+.floating_link:hover::before {
+    opacity: 1;
+}
+
+.floating_link::nth-child(1){
+    transition-delay: .1s;
+}
+
+.floating_link::nth-child(2){
+    transition-delay: .2s;
+}
+
+.floating_link::nth-child(3){
+    transition-delay: .3s;
+}
+
+.floating_link.admin-link::before{
+    right: -6em;
+}
+
+/* Rotate toggle */
+
+.active.floating_toggle {
+    transform: rotate(135deg);
+    transition: transform .6s ease-in-out;
+}
+
+/* Move icons */
+
+.active ~ ul .floating_link{
+    opacity: 1;
+}
+
+.active ~ ul .floating_link:nth-child(1){
+    transform: translate(3.5rem, -3.5rem)
+}
+
+.active ~ ul .floating_link:nth-child(2){
+    transform: translate(5.5rem)
+}
+
+.active ~ ul .floating_link:nth-child(3){
+    transform: translate(3.5rem, 3.5rem)
+}
+
+/* -------------- Back  button ------------ */
+.icono-regresar{
+    font-size: 2rem;
+    color: #fff;
+}
+
+.icono-regresar-container{
+    position: absolute;
+    transform: translateY(280%);
+    left: -10%;
+}
+
+/* --------------------------------------- Tablets Media Queries --------------------------- */
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+
+    .logo-container{
+        transform: translateY(-5rem);
+    }
+
+    .logo-container img{
+        transform: scale(1.3);
+    }
+
+    /* =========== Contenedores sign in & sign up =============*/
+
+    .login-container {
+        width: 40vw;
+        height: 30vh;
+    }
+
+    .floating_container {
+        left: -50px;
+    }
+
+    body.signup .login-container{
+        width: 45vw;
+        height: 35vh;
+    }
+
+    .icono-regresar-container {
+        transform: translateY(320%);
+    }
+
+    .icono-regresar {
+        font-size: 1.8rem;
+    }
+
+}
+
+/* ------------------------------------- Movile Devices Media Queries ------------------------------ */  
+@media only screen and (max-width: 767px) {
+    .login-container{
+        width: 18.75rem;
+        height: 18.75rem;
+        transform: translateY(30%);
+    }
+
+    .logo-container img{
+        transform: scale(1.5);
+    }
+
+    /* ================ */
+
+    .login-container {
+        width: 70vw;
+        height: 40vh;
+    }
+
+    form#signupForm h2 {
+        font-size: 1.2rem;
+    }
+
+    form#signupForm .inputBox {
+        width: 90%;
+    }
+
+    form#signupForm .inputBox input[type="submit"] {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .floating_container {
+        left: -20px;
+    }
+
+    .floating_toggle {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .floating_icon,
+    .floating_link {        width: 35px;
+        height: 35px;
+      }
+
+      body.signup .login-container{
+        width: 70vw;
+        height: 35vh;
+        
+    }
+
+    .icono-regresar-container {
+        top: 10px;
+        left: 10px;
+      }
+    
+      .icono-regresar {
+        font-size: 1.6rem;
+      }
+
+
+
+    
+
+
+}
+

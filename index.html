@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login INCOSOD</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="/assets/img/Logo.png" alt="logo de la empresa">
+        </div>
+        <div class="login-container">
+            <span></span>
+            <span></span>
+            <span></span>
+            <form id="signinForm">
+                <h2>Login</h2>
+                <div class="inputBox">
+                    <input type="text" placeholder="Usuario">
+                </div>
+                <div class="inputBox">
+                    <input type="password" placeholder="Contraseña">
+                </div>
+                <div class="inputBox group">
+                    <a href="#">¿Olvidó su contraseña?</a>
+                    <a href="#" id="signup">Cambiar de usuario</a>
+                </div>
+                <div class="inputBox">
+                    <input type="submit" placeholder="Sign in">
+                </div>
+
+            </form>
+
+            <form id="signupForm">
+                <h2>Seleccione usuario</h2>
+                <div class="floating">
+                    <div class="floating_container">
+                        <div class="floating_toggle" id="floating-toggle">
+                            <ion-icon name="add-sharp"></ion-icon>
+                        </div>
+
+                        <ul>
+                            <a href="#" class="floating_link" data-tooltip="Usuario 1" data-user="user1">
+                                <div class="floating_icon">
+                                    <ion-icon name="person-sharp"></ion-icon>
+                                </div>
+                            </a>
+
+                            <a href="#" class="floating_link admin-link" data-tooltip="Admin" data-user="admin">
+                                <div class="floating_icon">
+                                    <ion-icon name="person-sharp"></ion-icon>
+                                </div>
+                            </a>
+
+                            <a href="#" class="floating_link" data-tooltip="Usuario 2" data-user="user2">
+                                <div class="floating_icon">
+                                    <ion-icon name="person-sharp"></ion-icon>
+                                </div>
+                            </a>
+
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="inputBox group">
+                    <div class="icono-regresar-container">
+                    <a href="#"><i class="icono-regresar" id="signin">  
+                        <ion-icon name="arrow-back-circle-sharp"></ion-icon>
+                      </i></a>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+        <script>
+            if('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/service-worker.js');
+            }
+        </script>
+    
+        <script src="/assets/js/main.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+</body>
+</html>
