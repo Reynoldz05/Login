@@ -11,24 +11,36 @@ const urlsToCache = [
   './index.html',
   './assets/css/style.css',
   './assets/js/main.js',
-  './assets/img/Constuction.jpg',
-  './assets/img/Constuctionv2.jpg',
-  './assets/img/Constuctionv3.jpg',
+  './assets/img/Construction.jpg',
+  './assets/img/Constructionv2.jpg',
+  './assets/img/Constructionv3.jpg',
   './assets/img/Logo.png',
   './assets/img/Untitled5.gif',
   './assets/img/Untitled6.gif',
   './assets/img/Untitled7.gif',
-  './assets/logo.png',
+  './logo.png',
 ];
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(function(cache) {
-        return cache.addAll(urlsToCache);
+        return Promise.all(
+          urlsToCache.map(function(url) {
+            return fetch(url).then(function(response) {
+              if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+              }
+              return cache.put(url, response);
+            }).catch(function(error) {
+              console.log('There has been a problem with your fetch operation for ' + url + ': ' + error.message);
+            });
+          })
+        );
       })
   );
 });
+
 
 self.addEventListener('fetch', function(event) {
   event.respondWith(
